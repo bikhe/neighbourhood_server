@@ -1,0 +1,18 @@
+[Unit]
+Description=Roommate App Backend
+After=network.target
+
+[Service]
+Type=simple
+User=bikhe
+WorkingDirectory=/home/bikhe/projects/salam_sosed_backend
+ExecStart=/home/bikhe/projects/salam_sosed_backend/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=3
+Environment=PATH=/home/bikhe/projects/salam_sosed_backend/venv/bin
+
+StandardOutput=append:/home/bikhe/projects/salam_sosed_backend/logs/systemd.out.log
+StandardError=append:/home/bikhe/projects/salam_sosed_backend/logs/systemd.err.log
+
+[Install]
+WantedBy=multi-user.target
